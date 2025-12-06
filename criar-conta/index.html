@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../src/styles/autentication.css">
+  <link rel="stylesheet" href="../src/styles/global.css">
+  <script src="../src/script/auth.js" type="module" defer></script>
+  <title>Criar Conta | Bem Lembrado To-do List</title>
+</head>
+
+<body>
+  <main class="autentication-section">
+    <section class="form-section">
+      <div class="container">
+        <img src="../src/assets/logo/center-logo.svg" alt="Bem lembrado's logo" class="logo">
+        <h1 class="heading">Criar conta</h1>
+        <form class="create-account-form form-autentication">
+          <div class="input-data">
+            <label for="create-account-nickname">Apelido</label>
+            <input type="text" placeholder="Lorem Impsum" name="create-account-nickname" id="create-account-nickname"
+              class="input-form" required>
+          </div>
+          <div class="input-data">
+            <label for="create-account-email">Email</label>
+            <input type="email" name="create-account-email" id="create-account-email" class="input-form"
+              placeholder="exemplo@exemplo.com" required>
+          </div>
+          <div class="input-data">
+            <label for="create-account-password">Senha</label>
+            <input type="password" name="create-account-password" class="input-form" id="create-account-password"
+              placeholder="********" required>
+          </div>
+          <div class="input-data">
+            <label for="create-account-repeat-password">Confirme a senha</label>
+            <input type="password" name="create-account-repeat-password" class="input-form"
+              id="create-account-repeat-password" placeholder="********" required>
+          </div>
+          <button type="submit" class="primary-button">Criar conta</button>
+        </form>
+        </p>
+      </div>
+    </section>
+    <aside class="side-image">
+      <img src="../src/assets/illustrations/create-account-illustration.webp" alt="">
+    </aside>
+  </main>
+</body>
+
+</html>
