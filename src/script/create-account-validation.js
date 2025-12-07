@@ -1,3 +1,4 @@
+import { showError } from "./alerts.js";
 import { getUserList } from "./auth.js";
 
 const trimContent = (content) => content.trim();
@@ -10,26 +11,6 @@ const safeContent = (content) => {
 
 const formatContent = (content) => {
   return trimContent(safeContent(content));
-}
-
-const showError = (element, message) => {
-  const parentElement = element.parentNode;
-  const hasErrorElement = parentElement.querySelector(".error-message");
-
-  if (!hasErrorElement) {
-    const newErrorElement = `<span class="error-message">${message}</span>`;
-
-    parentElement.insertAdjacentHTML('beforeend', newErrorElement);
-  }
-
-  element.classList.add("invalid-info");
-
-  const errorElement = parentElement.querySelector(".error-message");
-
-  setTimeout(() => {
-    element.classList.remove("invalid-info");
-    errorElement.remove();
-  }, 3000);
 }
 
 export const nicknameValidation = (nicknameElement) => {

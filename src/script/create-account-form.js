@@ -1,22 +1,8 @@
+import { showSuccess } from "./alerts.js";
 import { createNewUser, moveToHome } from "./auth.js";
 import { emailValidation, nicknameValidation, passwordValidation } from "./create-account-validation.js";
 
-const createAccountForm = document.querySelector(".create-account-form");
-
-const showSuccess = () => {
-  const hasSuccessElement = createAccountForm.querySelector(".success");
-
-  if (!hasSuccessElement) {
-    const newSucessElement = `<span class="success">Usuário criado com sucesso!</span>`;
-    createAccountForm.insertAdjacentHTML("beforeend", newSucessElement);
-  }
-
-  const successElement = createAccountForm.querySelector(".success");
-
-  setTimeout(() => {
-    successElement.remove();
-  }, 1000);
-}
+export const createAccountForm = document.querySelector(".create-account-form");
 
 createAccountForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -35,7 +21,7 @@ createAccountForm.addEventListener("submit", (e) => {
   if (validInformation) {
     submitButton.disabled = true;
     createNewUser(validNickname, validEmail, validPassword);
-    showSuccess();
+    showSuccess(createAccountForm, "Usuário criado com sucesso!");
     moveToHome();
   }
 })
