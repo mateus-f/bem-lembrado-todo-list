@@ -2,7 +2,7 @@ import { showSuccess } from "./alerts.js";
 import { createNewUser, moveToHome } from "./auth.js";
 import { emailValidation, nicknameValidation, passwordValidation } from "./create-account-validation.js";
 
-export const createAccountForm = document.querySelector(".create-account-form");
+const createAccountForm = document.querySelector(".create-account-form");
 
 createAccountForm.addEventListener("submit", (e) => {
   e.preventDefault();
