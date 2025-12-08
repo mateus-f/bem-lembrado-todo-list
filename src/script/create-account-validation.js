@@ -1,17 +1,6 @@
 import { showError } from "./alerts.js";
 import { getUserList } from "./auth.js";
-
-const trimContent = (content) => content.trim();
-
-const safeContent = (content) => {
-  const temporary = document.createElement("div");
-  temporary.textContent = content;
-  return temporary.innerHTML;
-}
-
-const formatContent = (content) => {
-  return trimContent(safeContent(content));
-}
+import { formatContent } from "./contentUtils.js";
 
 export const nicknameValidation = (nicknameElement) => {
   const formattedNickname = formatContent(nicknameElement.value);
