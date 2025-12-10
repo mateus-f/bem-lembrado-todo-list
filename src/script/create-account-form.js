@@ -1,5 +1,6 @@
+import { moveToHome } from "./redirect.js";
 import { showSuccess } from "./alerts.js";
-import { createNewUser, moveToHome } from "./auth.js";
+import { createNewUser } from "./user.js";
 import { emailValidation, nicknameValidation, passwordValidation } from "./create-account-validation.js";
 
 const createAccountForm = document.querySelector(".create-account-form");

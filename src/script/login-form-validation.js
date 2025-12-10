@@ -1,5 +1,5 @@
 import { showError } from "./alerts.js";
-import { getUserList } from "./auth.js";
+import { getUserList } from "./database.js";
 import { formatContent } from "./contentUtils.js";
 
 export const loginValidation = (emailElement, passwordElement) => {

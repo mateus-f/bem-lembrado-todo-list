@@ -11,7 +11,7 @@ const createNewTaskId = () => {
 const getTaskId = (taskChildren) => {
   const taskParent = taskChildren.parentElement;
   const taskReferenceId = Number(taskParent.getAttribute("data-task-id"));
-  
+
   return taskReferenceId;
 }
 
@@ -34,7 +34,7 @@ export const addTask = (title) => {
   }
   const newTaskList = [...taskList, newTask];
 
-  updateUserTaskList(newTaskList)
+  updateUserTaskList(newTaskList);
 }
 
 export const completeTask = (completedTask) => {

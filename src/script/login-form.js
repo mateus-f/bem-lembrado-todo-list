@@ -1,5 +1,6 @@
-import { moveToHome, updateLoggedUser } from "./auth.js";
+import { updateLoggedUser } from "./database.js";
 import { loginValidation } from "./login-form-validation.js";
+import { moveToHome } from "./redirect.js";
 
 const loginForm = document.querySelector(".login-form");
 
