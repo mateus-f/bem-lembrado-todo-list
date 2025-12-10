@@ -1,7 +1,6 @@
 import { moveToLogin } from "./redirect.js";
-import { formatContent } from "./contentUtils.js";
-import { addTask, completeTask, removeTask } from "./task.js";
-import { getLoggedUser, getUserTaskList, updateLoggedUser } from "./database.js";
+import { completeTask, removeTask } from "./task.js";
+import { getLoggedUser, getUserTaskList } from "./database.js";
 
 const showLoggedUserNickname = () => {
   const loggedUser = getLoggedUser();
@@ -105,26 +104,4 @@ export const updateView = () => {
   showEmptyStateArea();
   showTaskList();
 }
-
-const inputTaskForm = document.querySelector(".input-task-form");
-const signOutBtn = document.querySelector(".sign-out");
-const inputForm = inputTaskForm.querySelector("input");
-
-signOutBtn.addEventListener("click", () => {
-  updateLoggedUser(null);
-})
-
-inputTaskForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  const taskToAdd = formatContent(inputForm.value);
-
-  inputForm.value = "";
-
-  if (taskToAdd) {
-    addTask(taskToAdd);
-  }
-});
-
-updateView();
 
