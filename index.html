@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./src/styles/global.css">
+  <link rel="stylesheet" href="./src/styles/main.css">
+  <link rel="stylesheet" href="./src/styles/header.css">
+  <script src="src/script/index.js" type="module" defer></script>
+  <title>Bem Lembrado | To-do list</title>
+</head>
+
+<body>
+  <header class="header">
+    <div class="container">
+      <img src="./src/assets/logo/left-logo.svg" alt="Bem lembrado's logo" class="logo">
+      <button class="sign-out">
+        Sair
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+          class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25" />
+        </svg>
+      </button>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <header class="profile-header">
+        <div class="profile-content">
+          <span class="welcome">Olá,</span>
+          <span class="heading name">???</span>
+        </div>
+        <div class="cards">
+          <div class="pending tasks-info">
+            <span>Pendentes</span>
+            <div class="heading">???</div>
+          </div>
+          <div class="done tasks-info">
+            <span>Finalizadas</span>
+            <div class="heading">???</div>
+          </div>
+        </div>
+      </header>
+
+      <form action="#" class="input-task-form">
+        <div class="input-area">
+          <label>Digite alguma tarefa:</label>
+          <input type="text" name="task-input" id="task-input" placeholder="Tecle 'K' para adicionar uma tarefa"
+            class="input-form" autocomplete="off" required>
+        </div>
+        <button type="submit" class="primary-button">
+          Adicionar
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+            <path fill-rule="evenodd"
+              d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z"
+              clip-rule="evenodd" />
+          </svg>
+        </button>
+      </form>
+
+      <div class="empty-state-area">
+        <div class="content">
+          <img src="src/assets/illustrations/empty-state-illustration.webp" alt="A guy writing tasks in a notepad" class="illustration">
+          <h2 class="title">Oops... Parece que não você ainda não criou nenhuma tarefa.</h2>
+          <p>Comece a anotar o que você deve lembrar!</p>
+        </div>
+      </div>
+
+      <div class="task-list-area">
+        <article class="pending card-list">
+          <header>
+            <h2>Tarefas pendentes</h2>
+          </header>
+          <ul class="task-list">
+          </ul>
+        </article>
+        <article class="done card-list">
+          <header>
+            <h2>Tarefas concluídas</h2>
+          </header>
+          <ul class="task-list">
+          </ul>
+        </article>
+      </div>
+
+    </div>
+  </main>
+</body>
+
+</html>

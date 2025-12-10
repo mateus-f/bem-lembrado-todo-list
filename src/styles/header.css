@@ -1,0 +1,40 @@
+.header {
+  width: 100%;
+  height: 3.75rem;
+  background: var(--light-gray);
+  box-shadow: var(--bs-bottom);
+
+  .container {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+
+    .logo {
+      height: 2.5rem;
+    }
+
+    .sign-out {
+      width: 5rem;
+      height: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      font-size: var(--text-base);
+      color: var(--dark-gray);
+      border-radius: var(--br-base);
+      gap: .625rem;
+      transition: var(--base-transition);
+
+      &:is(:hover, :focus, :active){
+        background: var(--primary);
+        color: var(--white);
+      }
+
+      svg {
+        height: 1.25rem;
+      }
+    }
+  }
+}
