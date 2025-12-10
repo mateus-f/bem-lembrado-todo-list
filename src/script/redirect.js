@@ -4,9 +4,7 @@ export const moveToHome = () => {
   const loggedUser = getLoggedUser();
 
   if (loggedUser) {
-    setTimeout(() => {
-      window.location.href = "/";
-    }, 2000);
+    window.location.href = "/";
   }
 }
 
