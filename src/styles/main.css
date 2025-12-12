@@ -12,48 +12,59 @@ body {
 }
 
 main {
+  @media (max-width: 75rem) {
+    margin-bottom: 2.5rem;
+  }
+
   .profile-header {
     display: flex;
-    height: 10rem;
-    padding: 1.25rem;
     border-radius: var(--br-base);
     justify-content: space-between;
     align-items: flex-end;
+    flex-wrap: wrap;
     margin-top: 3.75rem;
-    background: var(--primary-gradient);
     font-size: var(--base-text);
-    color: var(--white);
+    color: var(--dark-gray);
 
     .name {
       display: block;
       font-weight: 500;
     }
+  }
 
-    .cards {
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    margin-block: 1.25rem;
+    gap: 1.25rem;
+
+    .tasks-info {
+      flex: 1 15rem;
       display: flex;
-      gap: 1.25rem;
+      flex-direction: column;
+      padding: 20px;
+      border-radius: var(--br-base);
+      color: var(--white);
 
-      .tasks-info {
-        width: 7.5rem;
-        height: 7.5rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-end;
-        padding: .625rem;
-        border-radius: var(--br-base);
-        background: var(--purple);
+      &.pending {
+        background: var(--secondary);
+      }
+
+      &.done {
+        background: var(--primary);
       }
     }
   }
 
   .input-task-form {
-    margin-block: 2.5rem;
     display: flex;
+    margin-block: 2.5rem;
     align-items: flex-end;
+    flex-wrap: wrap;
     gap: 1.25rem;
 
     .input-area {
+      flex: 1;
       display: flex;
       flex-direction: column;
       gap: 1.25rem;
@@ -63,10 +74,14 @@ main {
     }
 
     .primary-button {
-      flex: 15rem;
+      flex: 0 10rem;
 
       svg {
         height: 1.5rem;
+      }
+
+      @media (max-width: 380px) {
+        flex: 1;
       }
     }
   }
@@ -83,7 +98,6 @@ main {
       text-align: center;
       padding: 2.5rem;
       gap: .625rem;
-      margin-bottom: 40px;
 
       .illustration {
         height: 17.5rem;
@@ -115,15 +129,17 @@ main {
       overflow: hidden;
 
       header {
+        padding: 1.25rem;
+        box-shadow: var(--bs-bottom);
+
         .pending & {
-          background-color: var(--secondary);
+          background: var(--secondary);
         }
 
         .done & {
-          background-color: var(--primary);
+          background: var(--primary);
         }
 
-        padding: 1.25rem;
 
         h2 {
           font-weight: 400;
@@ -135,40 +151,54 @@ main {
       .task-list {
         display: flex;
         flex-direction: column;
-        gap: 1.25rem;
-        padding: 1.25rem;
         overflow-y: auto;
         height: 20rem;
+        scrollbar-width: 1.25rem;
+        scrollbar-color: var(--gray) transparent;
+      }
 
-        .task {
+      .task {
+        display: flex;
+        align-items: center;
+        color: var(--dark-gray);
+        font-size: var(--base-text);
+        gap: .625rem;
+        padding: .625rem 1.25rem;
+
+        &:is(:hover) {
+          background: var(--light-gray);
+        }
+
+        input {
+          cursor: pointer;
+          accent-color: var(--primary);
+          height: 1.25rem;
+          width: 1.25rem;
+        }
+
+        .text {
           display: flex;
-          align-items: center;
-          color: var(--dark-gray);
-          font-size: var(--base-text);
-          gap: .625rem;
+          flex-direction: column;
+          gap: .3125rem;
 
-          input {
-            cursor: pointer;
-            accent-color: var(--primary);
-            height: 1.25rem;
-            width: 1.25rem;
+          .done & .task-title {
+            text-decoration: line-through;
           }
 
-          .text {
-            display: flex;
-            flex-direction: column;
-            gap: .3125rem;
-
-            .date {
-              font-size: var(--sm-text);
-            }
+          .date {
+            font-size: var(--sm-text);
           }
+        }
 
-          .remove-btn {
-            width: 1.25rem;
-            height: 1.25rem;
-            margin-left: auto;
-            background: transparent;
+        .remove-btn {
+          width: 1.25rem;
+          height: 1.25rem;
+          margin-left: auto;
+          background: transparent;
+          color: var(--gray);
+          transition: var(--base-transition);
+
+          &:is(:hover, :focus) {
             color: var(--dark-gray);
           }
         }
