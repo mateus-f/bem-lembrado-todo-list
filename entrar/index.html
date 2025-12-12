@@ -20,7 +20,8 @@
   </div>
   <main class="autentication-section">
     <aside class="side-image">
-      <img src="../src/assets/illustrations/login-illustration.webp" alt="A woman writing on paper at a desk with a computer and a cup beside her.">
+      <img src="../src/assets/illustrations/login-illustration.webp"
+        alt="A woman writing on paper at a desk with a computer and a cup beside her.">
     </aside>
     <section class="form-section">
       <div class="container">
@@ -29,11 +30,21 @@
         <form action="#" class="login-form form-autentication">
           <div class="input-data">
             <label for="login-email">Email</label>
-            <input type="email" name="login-email" id="login-email" class="input-form " placeholder="exemplo@exemplo.com" required>
+            <input type="email" name="login-email" id="login-email" class="input-form" autocomplete="email"
+              placeholder="exemplo@exemplo.com" required>
           </div>
-          <div class="input-data">  
+          <div class="input-data">
             <label for="login-password">Senha</label>
-            <input type="password" name="login-password" class="input-form" id="login-password" placeholder="********" required>
+            <input type="password" name="login-password" class="input-form" id="login-password"
+              autocomplete="current-password" placeholder="********" required>
+            <button class="password-visibility" type="button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="eye seeing">
+                <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                <path fill-rule="evenodd"
+                  d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 0 1 0-1.113ZM17.25 12a5.25 5.25 0 1 1-10.5 0 5.25 5.25 0 0 1 10.5 0Z"
+                  clip-rule="evenodd" />
+              </svg>
+            </button>
           </div>
           <button type="submit" class="primary-button">Entrar</button>
         </form>

@@ -48,9 +48,29 @@
       flex-direction: column;
       gap: 10px;
       font-size: var(--base-text);
+      position: relative;
+
+      input[type="password"]{
+        padding-right: 3.125rem;
+      }
+
+      .password-visibility {
+        background: transparent;
+        width: 1.875rem;
+        height: 1.875rem;
+        position: absolute;
+        right: .625rem;
+        bottom: .9375rem;
+        color: inherit;
+        transition: var(--base-transition);
+
+        &:is(:hover, :focus){
+          color: var(--primary);
+        }
+      }
     }
 
-    .primary-button{
+    .primary-button {
       margin-top: 1.25rem;
     }
   }
@@ -69,7 +89,7 @@
     width: 100%;
     align-items: flex-start;
 
-    .container{
+    .container {
       padding-block: 2rem;
     }
   }
