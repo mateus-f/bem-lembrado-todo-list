@@ -58,3 +58,17 @@ export const removeTask = (taskReference) => {
 
   updateUserTaskList(newTaskList);
 }
+
+export const uncheckTask = (taskToUncheck) => {
+  const taskList = getUserTaskList();
+  const taskId = getTaskId(taskToUncheck);
+  const newTaskList = taskList.map((task) => {
+    if (task["id"] === taskId) {
+      return { ...task, "isDone": false };
+    }
+
+    return task;
+  })
+
+  updateUserTaskList(newTaskList);
+}

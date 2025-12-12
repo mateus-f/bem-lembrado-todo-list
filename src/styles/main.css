@@ -190,16 +190,21 @@ main {
           }
         }
 
-        .remove-btn {
-          width: 1.25rem;
-          height: 1.25rem;
+        .actions-btn {
+          display: flex;
+          gap: .625rem;
           margin-left: auto;
-          background: transparent;
-          color: var(--gray);
-          transition: var(--base-transition);
 
-          &:is(:hover, :focus) {
-            color: var(--dark-gray);
+          button {
+            width: 1.25rem;
+            height: 1.25rem;
+            background: transparent;
+            transition: var(--base-transition);
+            color: var(--gray);
+
+            &:is(:hover, :focus) {
+              color: var(--dark-gray);
+            }
           }
         }
       }
