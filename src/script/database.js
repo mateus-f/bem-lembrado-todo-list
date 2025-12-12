@@ -65,3 +65,5 @@ export const updateUserTaskList = (newTaskList) => {
   updateDatabase(newUser);
   updateView();
 }
+
+createDB();
