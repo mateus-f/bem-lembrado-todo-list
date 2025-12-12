@@ -1,6 +1,6 @@
 import { moveToLogin } from "./redirect.js";
-import { bindTaskEvents, completeTask, removeTask, uncheckTask } from "./task.js";
-import { getLoggedUser, getUserTaskList } from "./database.js";
+import { completeTask, getTaskId, removeTask, uncheckTask } from "./task.js";
+import { getLoggedUser, getUserTaskList, updateUserTaskList } from "./database.js";
 
 const showLoggedUserNickname = () => {
   const loggedUser = getLoggedUser();
@@ -38,6 +38,16 @@ const showEmptyStateArea = () => {
     emptyStateSection.classList.remove("hidden");
   }
 }
+
+const bindTaskEvents = (buttons, action, userTaskList) => {
+  buttons.forEach(button => {
+    button.addEventListener("click", () => {
+      const taskId = getTaskId(button);
+      updateUserTaskList(action(taskId, userTaskList));
+    })
+  })
+}
+
 
 const showTaskList = () => {
   const taskListArea = document.querySelector(".task-list-area");

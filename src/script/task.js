@@ -1,5 +1,3 @@
-import { updateUserTaskList } from "./database.js";
-
 export const createNewTaskId = (currentTaskList) => {
   const maxId = Math.max(...currentTaskList.map(task => task["id"])) ?? 0;
   const nextId = currentTaskList.length > 0 ? maxId + 1 : 1;
@@ -70,13 +68,4 @@ export const uncheckTask = (currentTaskId, currentTaskList) => {
   })
 
   return newTaskList;
-}
-
-export const bindTaskEvents = (buttons, action, userTaskList) => {
-  buttons.forEach(button => {
-    button.addEventListener("click", () => {
-      const taskId = getTaskId(button);
-      updateUserTaskList(action(taskId, userTaskList));
-    })
-  })
 }
