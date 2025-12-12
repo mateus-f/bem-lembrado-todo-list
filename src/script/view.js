@@ -1,5 +1,5 @@
 import { moveToLogin } from "./redirect.js";
-import { completeTask, removeTask, uncheckTask } from "./task.js";
+import { bindTaskEvents, completeTask, removeTask, uncheckTask } from "./task.js";
 import { getLoggedUser, getUserTaskList } from "./database.js";
 
 const showLoggedUserNickname = () => {
@@ -43,16 +43,16 @@ const showTaskList = () => {
   const taskListArea = document.querySelector(".task-list-area");
   const pendingTaskArea = taskListArea.querySelector(".pending .task-list");
   const doneTaskArea = taskListArea.querySelector(".done .task-list");
-  const userTask = getUserTaskList();
+  const userTaskList = getUserTaskList();
 
   pendingTaskArea.innerHTML = "";
   doneTaskArea.innerHTML = "";
 
-  if (userTask.length >= 1) {
+  if (userTaskList.length >= 1) {
     taskListArea.classList.add("show");
     taskListArea.classList.remove("hidden");
 
-    userTask.map(task => {
+    userTaskList.map(task => {
       if (task["isDone"] === false) {
         pendingTaskArea.insertAdjacentHTML("beforeend", `
           <li class="task" data-task-id="${task["id"]}">
@@ -78,7 +78,7 @@ const showTaskList = () => {
                 <span class="date">${task["createdAt"]}</span>
               </div>
               <div class="actions-btn" data-task-id="${task["id"]}">
-                <button class="return-btn" title="Desmarcar tarefa">
+                <button class="uncheck-btn" title="Desmarcar tarefa">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                     <path fill-rule="evenodd" d="M9.53 2.47a.75.75 0 0 1 0 1.06L4.81 8.25H15a6.75 6.75 0 0 1 0 13.5h-3a.75.75 0 0 1 0-1.5h3a5.25 5.25 0 1 0 0-10.5H4.81l4.72 4.72a.75.75 0 1 1-1.06 1.06l-6-6a.75.75 0 0 1 0-1.06l6-6a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd" />
                   </svg>
@@ -96,11 +96,11 @@ const showTaskList = () => {
 
     const checkBtns = document.querySelectorAll(".task input");
     const removeBtns = document.querySelectorAll(".remove-btn");
-    const returnBtns = document.querySelectorAll(".return-btn");
+    const uncheckBtns = document.querySelectorAll(".uncheck-btn");
 
-    checkBtns.forEach(checkBtn => checkBtn.addEventListener("click", () => completeTask(checkBtn)));
-    removeBtns.forEach(removeBtn => removeBtn.addEventListener("click", () => removeTask(removeBtn)));
-    returnBtns.forEach(returnBtn => returnBtn.addEventListener("click", () => uncheckTask(returnBtn)));
+    bindTaskEvents(checkBtns, completeTask, userTaskList);
+    bindTaskEvents(removeBtns, removeTask, userTaskList);
+    bindTaskEvents(uncheckBtns, uncheckTask, userTaskList);
   } else {
     taskListArea.classList.remove("show");
     taskListArea.classList.add("hidden");

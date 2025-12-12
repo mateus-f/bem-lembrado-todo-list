@@ -1,21 +1,20 @@
-import { getUserTaskList, updateUserTaskList } from "./database.js";
+import { updateUserTaskList } from "./database.js";
 
-const createNewTaskId = () => {
-  const userTask = getUserTaskList();
-  const maxId = Math.max(...userTask.map(task => task["id"])) ?? 0;
-  const nextId = userTask.length > 0 ? maxId + 1 : 1;
+export const createNewTaskId = (currentTaskList) => {
+  const maxId = Math.max(...currentTaskList.map(task => task["id"])) ?? 0;
+  const nextId = currentTaskList.length > 0 ? maxId + 1 : 1;
 
   return nextId;
 }
 
-const getTaskId = (taskChildren) => {
+export const getTaskId = (taskChildren) => {
   const taskParent = taskChildren.parentElement;
   const taskReferenceId = Number(taskParent.getAttribute("data-task-id"));
 
   return taskReferenceId;
 }
 
-const getTaskDate = () => {
+export const getTaskDate = () => {
   const currentDate = new Date();
   const currentDay = currentDate.getDate().toString().padStart(2, "0");
   const currentMonth = (currentDate.getMonth() + 1).toString().padStart(2, "0");
@@ -24,22 +23,22 @@ const getTaskDate = () => {
   return `${currentDay}/${currentMonth}/${currentYear}`;
 }
 
-export const addTask = (title) => {
-  const taskList = getUserTaskList();
+export const addTask = (taskTitle, taskId, taskDate, currentTaskList) => {
+  const taskList = currentTaskList;
   const newTask = {
-    "id": createNewTaskId(),
-    "title": title,
+    "id": taskId,
+    "title": taskTitle,
     "isDone": false,
-    "createdAt": getTaskDate()
+    "createdAt": taskDate
   }
   const newTaskList = [...taskList, newTask];
 
-  updateUserTaskList(newTaskList);
+  return newTaskList;
 }
 
-export const completeTask = (completedTask) => {
-  const taskList = getUserTaskList();
-  const taskId = getTaskId(completedTask);
+export const completeTask = (currentTaskId, currentTaskList) => {
+  const taskList = currentTaskList;
+  const taskId = currentTaskId;
   const newTaskList = taskList.map((task) => {
     if (task["id"] === taskId) {
       return { ...task, "isDone": true };
@@ -48,20 +47,20 @@ export const completeTask = (completedTask) => {
     return task;
   })
 
-  updateUserTaskList(newTaskList);
+  return newTaskList;
 }
 
-export const removeTask = (taskReference) => {
-  const taskList = getUserTaskList();
-  const taskId = getTaskId(taskReference);
+export const removeTask = (currentTaskId, currentTaskList) => {
+  const taskList = currentTaskList;
+  const taskId = currentTaskId;
   const newTaskList = taskList.filter(task => task["id"] !== taskId);
 
-  updateUserTaskList(newTaskList);
+  return newTaskList;
 }
 
-export const uncheckTask = (taskToUncheck) => {
-  const taskList = getUserTaskList();
-  const taskId = getTaskId(taskToUncheck);
+export const uncheckTask = (currentTaskId, currentTaskList) => {
+  const taskList = currentTaskList;
+  const taskId = currentTaskId;
   const newTaskList = taskList.map((task) => {
     if (task["id"] === taskId) {
       return { ...task, "isDone": false };
@@ -70,5 +69,14 @@ export const uncheckTask = (taskToUncheck) => {
     return task;
   })
 
-  updateUserTaskList(newTaskList);
+  return newTaskList;
+}
+
+export const bindTaskEvents = (buttons, action, userTaskList) => {
+  buttons.forEach(button => {
+    button.addEventListener("click", () => {
+      const taskId = getTaskId(button);
+      updateUserTaskList(action(taskId, userTaskList));
+    })
+  })
 }

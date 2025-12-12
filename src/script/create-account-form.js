@@ -1,7 +1,8 @@
 import { moveToHome } from "./redirect.js";
 import { showSuccess } from "./alerts.js";
-import { createNewUser } from "./user.js";
+import { createNewUser, createNewUserId } from "./user.js";
 import { emailValidation, nicknameValidation, passwordValidation } from "./create-account-validation.js";
+import { getUserList, updateDatabase } from "./database.js";
 
 const createAccountForm = document.querySelector(".create-account-form");
 const visibilityPasswordBtns = document.querySelectorAll(".password-visibility");
@@ -45,8 +46,12 @@ createAccountForm.addEventListener("submit", (e) => {
   const validInformation = validNickname && validEmail && validPassword;
 
   if (validInformation) {
+    const userList = getUserList();
+    const userId = createNewUserId(userList);
+
     submitButton.disabled = true;
-    createNewUser(validNickname, validEmail, validPassword);
+
+    updateDatabase(createNewUser(validNickname, validEmail, validPassword, userId));
     showSuccess(createAccountForm, "Usuário criado com sucesso!");
     moveToHome();
   }
