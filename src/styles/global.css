@@ -164,6 +164,37 @@ a {
   animation: show 1s 1;
 }
 
+.loader-overlay {
+  z-index: 1;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+  height: 100%;
+  width: 100%;
+  top: 0;
+
+  .loader {
+    border: 5px solid var(--primary);
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    width: 5rem;
+    height: 5rem;
+    animation: rotate 1s infinite;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .hidden {
   display: none;
 }
