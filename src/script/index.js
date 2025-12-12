@@ -1,6 +1,6 @@
-import { addTask } from "./task.js";
+import { addTask, createNewTaskId, getTaskDate } from "./task.js";
 import { updateView } from "./view.js";
-import { updateLoggedUser } from "./database.js";
+import { getUserTaskList, updateLoggedUser, updateUserTaskList } from "./database.js";
 import { formatContent } from "./contentUtils.js";
 
 const signOutBtn = document.querySelector(".sign-out");
@@ -26,12 +26,15 @@ document.addEventListener("keydown", (e) => {
 inputTaskForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const taskToAdd = formatContent(inputForm.value);
+  const taskTitle = formatContent(inputForm.value);
+  const userTaskList = getUserTaskList();
+  const taskId = createNewTaskId(userTaskList);
 
   inputForm.value = "";
 
-  if (taskToAdd) {
-    addTask(taskToAdd);
+  if (taskTitle) {
+    const newTaskList = addTask(taskTitle, taskId, getTaskDate(), userTaskList);
+    updateUserTaskList(newTaskList);
   }
 });
 

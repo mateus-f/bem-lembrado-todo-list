@@ -1,12 +1,10 @@
 import { showError } from "./alerts.js";
-import { getUserList } from "./database.js";
 import { formatContent } from "./contentUtils.js";
 
-export const loginValidation = (emailElement, passwordElement) => {
-  const users = getUserList();
-  const validEmail = emailValidation(emailElement, users);
-  const validPassword = passwordValidation(passwordElement, validEmail, users);
-  const userFound = users.find(user => user["email"] === validEmail && user["password"] === validPassword);
+export const loginValidation = (emailElement, passwordElement, currentUserList) => {
+  const validEmail = emailValidation(emailElement, currentUserList);
+  const validPassword = passwordValidation(passwordElement, validEmail, currentUserList);
+  const userFound = currentUserList.find(user => user["email"] === validEmail && user["password"] === validPassword);
 
   return userFound;
 }
