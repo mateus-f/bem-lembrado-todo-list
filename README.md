@@ -41,10 +41,7 @@ O LocalStorage é responsável por guardar:
 Tudo funciona no front-end, sem necessidade de API ou back-end.
 
 ## 🛠️ Tecnologias Utilizadas
-- **HTML5**
-- **CSS3**
-- **JavaScript (ES6+)**
-- **LocalStorage**
+<img src="https://skillicons.dev/icons?i=javascript,jest,html,css,figma,git" />
 
 ## 📚 Objetivo
 Este projeto foi desenvolvido para praticar:
