@@ -1,5 +1,3 @@
-<img width="100%" alt="Banner" src="https://github.com/user-attachments/assets/47a3796f-83cb-4e95-941b-70c9cb6e1a57" />
-
 # 📝 Bem Lembrado — To-Do List
 
 O **Bem Lembrado** é um projeto de lista de tarefas com autenticação simples utilizando **LocalStorage**.  
@@ -29,6 +27,12 @@ Após o login, o sistema:
   - ✔️ Total de tarefas concluídas  
   - ⏳ Total de tarefas pendentes
 - Renderiza dinamicamente a lista de tarefas vinculada ao usuário.
+
+## 🧪 Testes Unitários
+O projeto inclui **testes com Jest** para garantir que:
+
+- Usuários sejam criados corretamente.  
+- Ações relacionadas às tarefas (adicionar, completar e remover) funcionem conforme esperado.
 
 ## 💾 Armazenamento (LocalStorage)
 O LocalStorage é responsável por guardar:
