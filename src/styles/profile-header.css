@@ -1,0 +1,91 @@
+:root {
+  --iniciante-i: #8E9AAF;
+  --iniciante-ii: #7C8AA1;
+  --iniciante-iii: #6B7B94;
+
+  --produtivo-i: #6A9FF8;
+  --produtivo-ii: #5A8CDE;
+  --produtivo-iii: #4A78C3;
+
+  --focado-i: #4AC6A7;
+  --focado-ii: #3EAE93;
+  --focado-iii: #349880;
+
+  --eficiente-i: #F5A623;
+  --eficiente-ii: #DB921F;
+  --eficiente-iii: #C27E1B;
+
+  --mestre-i: #9B59B6;
+  --mestre-ii: #884DA1;
+  --mestre-iii: #74428B;
+
+  --lendario-i: #E64922;
+  --lendario-ii: #CC2F1E;
+  --lendario-iii: #B31A1A;
+}
+
+.profile-header {
+  display: flex;
+  border-radius: var(--br-base);
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  margin-top: 3.75rem;
+  font-size: var(--base-text);
+  color: var(--dark-gray);
+
+  .name {
+    display: block;
+    font-weight: 500;
+  }
+
+  .level {
+    margin-top: .625rem;
+    display: flex;
+    align-items: center;
+    gap: .625rem;
+
+    .level-tag {
+      background: var(--dark-gray);
+      color: var(--white);
+      border-radius: var(--br-sm);
+      padding: .3125rem .625rem;
+
+      &.iniciante {
+        &.i { background: var(--iniciante-i); }
+        &.ii { background: var(--iniciante-ii); }
+        &.iii { background: var(--iniciante-iii); }
+      }
+
+      &.produtivo {
+        &.i { background: var(--produtivo-i); }
+        &.ii { background: var(--produtivo-ii); }
+        &.iii { background: var(--produtivo-iii); }
+      }
+
+      &.focado {
+        &.i { background: var(--focado-i); }
+        &.ii { background: var(--focado-ii); }
+        &.iii { background: var(--focado-iii); }
+      }
+
+      &.eficiente {
+        &.i { background: var(--eficiente-i); }
+        &.ii { background: var(--eficiente-ii); }
+        &.iii { background: var(--eficiente-iii); }
+      }
+
+      &.mestre {
+        &.i { background: var(--mestre-i); }
+        &.ii { background: var(--mestre-ii); }
+        &.iii { background: var(--mestre-iii); }
+      }
+
+      &.lendário {
+        &.i { background: var(--lendario-i); }
+        &.ii { background: var(--lendario-ii); }
+        &.iii { background: var(--lendario-iii); }
+      }
+    }
+  }
+}

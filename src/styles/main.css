@@ -15,23 +15,7 @@ main {
   @media (max-width: 75rem) {
     margin-bottom: 2.5rem;
   }
-
-  .profile-header {
-    display: flex;
-    border-radius: var(--br-base);
-    justify-content: space-between;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    margin-top: 3.75rem;
-    font-size: var(--base-text);
-    color: var(--dark-gray);
-
-    .name {
-      display: block;
-      font-weight: 500;
-    }
-  }
-
+  
   .cards {
     display: flex;
     flex-wrap: wrap;
@@ -39,10 +23,10 @@ main {
     gap: 1.25rem;
 
     .tasks-info {
-      flex: 1 15rem;
+      flex: 1;
       display: flex;
       flex-direction: column;
-      padding: 20px;
+      padding: 1.25rem;
       border-radius: var(--br-base);
       color: var(--white);
 
@@ -58,7 +42,7 @@ main {
 
   .input-task-form {
     display: flex;
-    margin-block: 2.5rem;
+    margin-block: 1.25rem;
     align-items: flex-end;
     flex-wrap: wrap;
     gap: 1.25rem;

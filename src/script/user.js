@@ -11,6 +11,8 @@ export const createNewUser = (nickname, email, password, id) => {
     "nickname": nickname,
     "email": email,
     "password": password,
+    "rank": null,
+    "score": 0,
     "tasks": []
   };
 

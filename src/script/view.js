@@ -1,6 +1,7 @@
 import { moveToLogin } from "./redirect.js";
 import { completeTask, getTaskId, removeTask, uncheckTask } from "./task.js";
-import { getLoggedUser, getUserTaskList, updateUserTaskList } from "./database.js";
+import { getLoggedUser, getUserTaskList, updateDatabase, updateUserTaskList } from "./database.js";
+import { decreaseScore, getRankProgress, increaseScore } from "./rank.js";
 
 const showLoggedUserNickname = () => {
   const loggedUser = getLoggedUser();
@@ -8,6 +9,17 @@ const showLoggedUserNickname = () => {
   const profileHeaderNickname = document.querySelector(".profile-content .name");
 
   profileHeaderNickname.textContent = loggedUserNickame;
+}
+
+const showUserRank = () => {
+  const loggedUser = getLoggedUser();
+  const { rankName, nextTargetScore } = getRankProgress(loggedUser["score"]);
+  const rankNameElement = document.querySelector(".level .level-tag");
+  const rankProgressElement = document.querySelector(".level .level-progress");
+
+  rankNameElement.textContent = rankName;
+  rankNameElement.className = `level-tag ${rankName.toLocaleLowerCase()}`;
+  rankProgressElement.textContent = `Pontuação: ${loggedUser["score"]}/${nextTargetScore}`;
 }
 
 const showPendingTaskScore = () => {
@@ -39,15 +51,20 @@ const showEmptyStateArea = () => {
   }
 }
 
-const bindTaskEvents = (buttons, action, userTaskList) => {
+const bindTaskEvents = (buttons, taskAction, userTaskList, scoreAction) => {
   buttons.forEach(button => {
     button.addEventListener("click", () => {
       const taskId = getTaskId(button);
-      updateUserTaskList(action(taskId, userTaskList));
+
+      if (scoreAction) {
+        const loggedUser = getLoggedUser();
+        updateDatabase(scoreAction(loggedUser))
+      }
+
+      updateUserTaskList(taskAction(taskId, userTaskList));
     })
   })
 }
-
 
 const showTaskList = () => {
   const taskListArea = document.querySelector(".task-list-area");
@@ -105,12 +122,12 @@ const showTaskList = () => {
     })
 
     const checkBtns = document.querySelectorAll(".task input");
-    const removeBtns = document.querySelectorAll(".remove-btn");
     const uncheckBtns = document.querySelectorAll(".uncheck-btn");
+    const removeBtns = document.querySelectorAll(".remove-btn");
 
-    bindTaskEvents(checkBtns, completeTask, userTaskList);
+    bindTaskEvents(checkBtns, completeTask, userTaskList, increaseScore);
+    bindTaskEvents(uncheckBtns, uncheckTask, userTaskList, decreaseScore);
     bindTaskEvents(removeBtns, removeTask, userTaskList);
-    bindTaskEvents(uncheckBtns, uncheckTask, userTaskList);
   } else {
     taskListArea.classList.remove("show");
     taskListArea.classList.add("hidden");
@@ -120,6 +137,7 @@ const showTaskList = () => {
 export const updateView = () => {
   moveToLogin();
   showLoggedUserNickname();
+  showUserRank();
   showPendingTaskScore();
   showDoneTaskScore();
   showEmptyStateArea();

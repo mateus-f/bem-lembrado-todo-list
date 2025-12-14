@@ -37,6 +37,8 @@ describe("Criação do usuário", () => {
       "nickname": "Mateus",
       "email": "mateus@mateus.com",
       "password": "mateus1_",
+      "rank": null,
+      "score": 0,
       "tasks": []
     };
 
