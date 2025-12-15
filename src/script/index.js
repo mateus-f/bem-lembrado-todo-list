@@ -13,9 +13,9 @@ signOutBtn.addEventListener("click", () => {
 })
 
 document.addEventListener("keydown", (e) => {
-  if (e.key === "k" || e.key === "K") {
-    inputForm.focus();
+  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
     e.preventDefault();
+    inputForm.focus();
   }
 
   if (e.key === "Escape") {
