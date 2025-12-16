@@ -28,6 +28,11 @@ Após o login, o sistema:
   - ⏳ Total de tarefas pendentes
 - Renderiza dinamicamente a lista de tarefas vinculada ao usuário.
 
+## 🏆 Sistema de Rank
+O sistema de rank é baseado na quantidade total de tarefas concluídas pelo usuário, funcionando como um sistema de pontuação e progressão.
+
+👉 Veja a lista completa de ranks em [RANKS.md](./RANKS.md)
+
 ## 🧪 Testes Unitários
 O projeto inclui **testes com Jest** para garantir que:
 
